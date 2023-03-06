@@ -13,7 +13,7 @@ public class AppConfig {
                                                                 // UserServiceImpl 입장에서는 의존관계를 마치 외부에서 주입해주는 것 같다고 해서 DI(의존관계 주입, 의존성 주입)라고 한다.
         // ctrl + alt + m -> extract method(리펙토링) -> 각자의 역할을 알 수 있다.
     }
-    private MemoryUserRepository userRepository() {
+    public MemoryUserRepository userRepository() {
         return new MemoryUserRepository();
     }
 
