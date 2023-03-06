@@ -8,7 +8,6 @@
     </bean>
 
     <bean id="memberRepository" class="hello.core.member.MemoryMemberRepository"/>
-    // xml이랑 AppConfig랑 완전 같다.
 
     <bean id="orderService" class="hello.core.order.OrderServiceImpl">
         <constructor-arg name="memberRepository" ref="memberRepository"/>
