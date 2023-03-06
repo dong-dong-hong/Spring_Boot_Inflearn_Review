@@ -6,13 +6,20 @@ import hello.core.order_1.OrderService;
 import hello.core.user.Rank;
 import hello.core.user.User;
 import hello.core.user.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 public class OrderApp02 {
     public static void main(String[] args) {
-        AppConfig appConfig = new AppConfig();
-       UserService userService = appConfig.userService();
-       OrderService orderService = appConfig.orderService();
+
+//        AppConfig appConfig = new AppConfig();
+//       UserService userService = appConfig.userService();
+//       OrderService orderService = appConfig.orderService();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        UserService userService = applicationContext.getBean("userService", UserService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
         long userId = 1L;
         User user = new User(userId, "memberA" , Rank.SLIVER);
