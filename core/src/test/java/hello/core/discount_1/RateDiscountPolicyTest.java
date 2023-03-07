@@ -23,8 +23,6 @@ class RateDiscountPolicyTest {
         assertThat(discount).isEqualTo(1000);
     }
 
-
-
     @Test
     @DisplayName("Gold는 20% 할인이 되어야한다.")
     void gold_possible() {
