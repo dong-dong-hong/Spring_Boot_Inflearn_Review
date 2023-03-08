@@ -39,6 +39,7 @@ public class AppConfig { // MemoryMemberRepository의 역할이 전혀 보이지
         System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
+
     @Bean
     public OrderService orderService() {
         System.out.println("call AppConfig.orderService");
