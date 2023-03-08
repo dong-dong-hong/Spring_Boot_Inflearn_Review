@@ -1,6 +1,6 @@
 package hello.core;
 
-import hello.core.order_1.AppConfig;
+import hello.core.order_1.AppConfig2;
 import hello.core.order_1.Order;
 import hello.core.order_1.OrderService;
 import hello.core.user.Rank;
@@ -17,7 +17,7 @@ public class OrderApp02 {
 //       UserService userService = appConfig.userService();
 //       OrderService orderService = appConfig.orderService();
 
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig2.class);
         UserService userService = applicationContext.getBean("userService", UserService.class);
         OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 

@@ -1,7 +1,6 @@
 package hello.core.order_1;
 
 import hello.core.discount_1.DiscountPolicy;
-import hello.core.discount_1.FixDiscountPolicy;
 import hello.core.discount_1.RateDiscountPolicy;
 import hello.core.user.MemoryUserRepository;
 import hello.core.user.UserService;
@@ -10,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AppConfig {
+public class AppConfig2 {
     @Bean
     public UserService userService() {
         return new UserServiceImpl(userRepository()); // MemoryUserRepository 객체를 생성하고 그 참조값에 UserServiceImpl을 생성하면서 생성자로 전달한다.

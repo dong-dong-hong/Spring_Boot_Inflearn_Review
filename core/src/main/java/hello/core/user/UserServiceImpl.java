@@ -17,4 +17,8 @@ public class UserServiceImpl implements UserService {
     public User AskRank(Long userId) {
         return userRepository.askById(userId);
     }
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
 }

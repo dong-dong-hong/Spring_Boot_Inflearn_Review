@@ -10,13 +10,13 @@ public class OrderServiceTest {
     UserService userservice;
     OrderService orderService;
     @BeforeEach
-    public void BeforeEach() {
-        AppConfig appConfig = new AppConfig();
+    public void beforeEach() {
+        AppConfig2 appConfig = new AppConfig2();
         userservice = appConfig.userService();
         orderService = appConfig.orderService();
     }
     @Test
-    void CreateOrder() {
+    void createOrder() {
         Long userId = 1L;
         User user = new User(userId, "memberA" , Rank.SLIVER);
         userservice.join(user);
@@ -28,6 +28,6 @@ public class OrderServiceTest {
         Order order = orderService.createOrder(1L, "ProductA", 10000);
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
         Order order2 = orderService.createOrder(2L , "ProductB" , 20000);
-        Assertions.assertThat(order2.getDiscountPrice()).isEqualTo(2000);
+        Assertions.assertThat(order2.getDiscountPrice()).isEqualTo(4000);
     }
 }

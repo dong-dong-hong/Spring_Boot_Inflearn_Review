@@ -1,8 +1,8 @@
-package hello.core.beanfind;
+package hello.core.beanfind_1;
 
-import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
-import hello.core.discount.RateDiscountPolicy;
+import hello.core.discount_1.DiscountPolicy;
+import hello.core.discount_1.FixDiscountPolicy;
+import hello.core.discount_1.RateDiscountPolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class ApplicataionContextExtendsFindTest {
+public class ApplicataionContextExtendsFindTest2 {
 
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(TestConfig.class);
 
@@ -31,13 +31,6 @@ public class ApplicataionContextExtendsFindTest {
         DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy", DiscountPolicy.class);
         assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPolicy.class);
     }
-//    @Test
-//    @DisplayName("특정 하위 타입으로 조회") // 좋은 방법은 아니다.
-//    void findBeanBySubType() {
-//        DiscountPolicy bean = ac.getBean(DiscountPolicy.class);
-//        assertThat(bean).isInstanceOf(RateDiscountPolicy.class);
-//    }
-
     @Test
     @DisplayName("부모 타입으로 모두 조회하기")
     void findAllBeanParentType() {

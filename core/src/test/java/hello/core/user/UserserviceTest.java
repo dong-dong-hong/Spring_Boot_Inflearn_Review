@@ -1,6 +1,6 @@
 package hello.core.user;
 
-import hello.core.order_1.AppConfig;
+import hello.core.order_1.AppConfig2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,8 +10,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class UserserviceTest {
     UserService userService;
     @BeforeEach // 각 테스트 실행전에 무조건 실행되는 것
-    public void BeforeEach() {
-        AppConfig appConfig = new AppConfig();
+    public void beforeEach() {
+        AppConfig2 appConfig = new AppConfig2();
         userService = appConfig.userService();
     }
 
