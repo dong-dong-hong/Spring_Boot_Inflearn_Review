@@ -13,18 +13,32 @@ import org.springframework.stereotype.Service;
 
 @Component
 public class OrderServiceImpl implements OrderService {
-    private MemberRepository memberRepository;
-    private DiscountPolicy discountPolicy;
+//   @Autowired private MemberRepository memberRepository;
+   private final MemberRepository memberRepository;
+//    @Autowired private DiscountPolicy discountPolicy;
+   private final DiscountPolicy discountPolicy;
 
-    @Autowired
-    public void setMemberRepository(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
 
-    @Autowired
-    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
-        this.discountPolicy = discountPolicy;
-    }
+//   @Autowired
+//   public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//       this.memberRepository = memberRepository;
+//       this.discountPolicy = discountPolicy;
+       // 참고 : 어쩌면 당연한 이야기지만 의존관계 자동 주입은 스프링 컨테이너가 관리하는 스프링 빈이어야 한다.
+       // 스프링 빈이 아닌 Member 같은 클래스에서 @AutoWired 코드를 적용해도 아무 기능도 동작하지 않는다.
+//   }
+
+//    @Autowired(required = false) // 선택적으로 필수값이 아니니까 있어도 없어도 상관없음
+//    @Autowired
+//    public void setMemberRepository(MemberRepository memberRepository) {
+////        System.out.println("memberRepository = " + memberRepository);
+//        this.memberRepository = memberRepository;
+//    }
+
+//    @Autowired
+//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+////        System.out.println("discountPolicy = " + discountPolicy);
+//        this.discountPolicy = discountPolicy;
+//    }
 
     // 참고 : @Autowired의 기본 동작은 주입할 대상이 없으면 오류가 발생한다.
     // 주입할 대상이 없어도 동작하게 하려면 @Autowired(require = false)로 지정하면 된다.
@@ -33,8 +47,15 @@ public class OrderServiceImpl implements OrderService {
     // setXxx, getXxx라는 메서드를 통해서 값을 읽거나 수정하는 규칙을 만들었는 데,
     // 그것이 자바빈 프로터티 규약이다. 더 자세한 내용은 자바빈 프로터티를 검색해보자.
 
+    // 주로 생성자 주입을 쓰고 변경 가능할 때는 가끔 수정자 주입이 쓰인다.
+
     @Autowired // 생성자에서 여러 의존관계도 한번에 주입받을 수 있다.
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) { // 싱글톤 보장이니까 위에 set이나 생성자나 같다.
+//        System.out.println("1. OrderServiceImpl.OrderServiceImpl");
+//         sout  : 문자열을 System.out으로 출력
+//         soutm : 현재 클래스 및 메서드 이름을 System.out으로 출력
+//         soutv : 값을 System.out으로 출력
+//         soutp : 메서드 매개변수 이름 및 값을 System.out으로 출력
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }

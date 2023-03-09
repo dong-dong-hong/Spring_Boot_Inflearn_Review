@@ -1,7 +1,9 @@
 package hello.core.scan;
 
+import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.order.AutoAppConfig;
+import hello.core.order.OrderServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -16,6 +18,10 @@ public class AutoAppConfigTest {
 
         MemberService memberService = ac.getBean(MemberService.class);
         assertThat(memberService).isInstanceOf(MemberService.class);
+
+        OrderServiceImpl bean = ac.getBean(OrderServiceImpl.class);
+        MemberRepository memberRepository = bean.getMemberRepository();
+        System.out.println("memberRepository = " + memberRepository);
 
         // AnnotationConfigApplicationContext를 사용하는 것은 기존과 동일하다.
         // 설정 정보로 AutoAppConfig 클래스를 넘겨준다.
